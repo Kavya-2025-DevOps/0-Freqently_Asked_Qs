@@ -8,6 +8,7 @@
 6. 
 
 
+##
 
 **Others Prepare**
 
@@ -33,16 +34,15 @@ A Docker container can be modified in a few practical ways:
 
 
 2.	Difference between
-	 a. Docker image and container  
-  **Docker IMAGE:** 
+*a.	Docker image and container*    
+  **Docker IMAGE:**  
   Definition: A read-only template with application code, libraries, and dependencies
   State: Static and immutable  
   Purpose: Used to create containers  
   Storage: Stored on disk (e.g., in registries like Docker Hub)  
   Lifecycle: Built once and reused  
   Analogy: Like a class in programming  
-  ##  
-  **Docker CONTAINER:** 
+  **Docker CONTAINER:**  
   Definition: A running instance of a Docker image  
   State: Dynamic and can be modified during execution  
   Purpose: Executes the application  
@@ -50,13 +50,12 @@ A Docker container can be modified in a few practical ways:
   Lifecycle: Created, started, stopped, and deleted  
   Analogy: Like an object (instance of a class)  
 
-b.	COPY vs ADD  
+*b.	COPY vs ADD*    
 **COPY**  
 Function: Copies files from host to container  
 Features: Simple file copy only  
 Use case: Preferred for basic copying  
-Behavior: Predictable and straightforward  
-##  
+Behavior: Predictable and straightforward    
 **ADD**  
 Function: Copies files + supports extra features  
 Features: Can extract compressed files and download from URLs  
@@ -64,15 +63,22 @@ Use case: Used when needing auto-extraction or remote download
 Behavior: More complex due to additional functionality  
 
 
-c.	RUN vs CMD  
-Aspect	RUN	CMD
-Purpose	Executes commands during image build	Specifies default command to run when container starts
-Execution time	Build time	Runtime
-Result	Creates new image layers	Does not create layers, just sets default command
-Overriding	Cannot be overridden at runtime	Can be overridden using docker run
-Example use	Install packages (apt-get install)	Start app (node app.js)
+*c.	RUN vs CMD*   
+**RUN**  
+Purpose: Executes commands during image build  
+Execution time: Build time  
+Result: Creates new image layers  
+Overriding: Cannot be overridden at runtime  
+Example: use	Install packages (apt-get install)  
+**CMD**  
+Purpose: Specifies default command to run when container starts
+Execution time: Runtime  
+Result: Does not create layers, just sets default command  
+Overriding: Can be overridden using docker run  
+Example: Start app (node app.js)   
 
-d.	CMD vs ENTRYPOINT  
+
+*d.	CMD vs ENTRYPOINT*  
 Aspect	CMD	ENTRYPOINT
 Purpose	Sets default command/arguments	Sets the main command to run
 Overriding	Easily overridden by docker run command	Not easily overridden (needs --entrypoint)
@@ -81,7 +87,7 @@ Behavior	Runs only if no command is given	Always executes when container starts
 Usage together	Provides default arguments to ENTRYPOINT	Works with CMD to form full command
 Example analogy	Default parameters	Main executable  
 
-e. docker run vs docker start  
+*e. docker run vs docker start*    
 Aspect	docker run	docker start
 Purpose	Creates and starts a new container from an image	Starts an existing stopped container
 Container state	Always creates a fresh container	Reuses the same container
