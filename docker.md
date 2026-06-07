@@ -15,16 +15,26 @@ Level 1: Core Docker Fundamentals
 
 1.	What problem does Docker solve compared to traditional virtualization?  
 In traditional virtualization the virtual machines use independent OS systems for each virtual machine and this make them heavier and slow.
-but in docker containers they share the host OS, making them lightweight and fast to start and it also ensures the consistency across the environments (dev, test, production) by packaging the application and their dependencies together. It also reduces the compatibility issues and improves the scalability and deployment speed
+But in docker containers they share the host OS, making them lightweight and fast to start and it also ensures the consistency across the environments (dev, test, production) by packaging the application and their dependencies together. It also reduces the compatibility issues and improves the scalability and deployment speed
 
 2.	Difference between Docker image and container
-Aspect	Docker Image	Docker Container
-Definition	A read-only template with application code, libraries, and dependencies	A running instance of a Docker image
-State	Static and immutable	Dynamic and can be modified during execution
-Purpose	Used to create containers	Executes the application
-Storage	Stored on disk (e.g., in registries like Docker Hub)	Runs in memory with a writable layer
-Lifecycle	Built once and reused	Created, started, stopped, and deleted
-Analogy	Like a class in programming	Like an object (instance of a class)
+Docker Image:
+Definition: A read-only template with application code, libraries, and dependencies
+State:Static and immutable  
+Purpose:Used to create containers  
+Storage:Stored on disk (e.g., in registries like Docker Hub)  
+Lifecycle:Built once and reused  
+Analogy:Like a class in programming  
+
+Docker Container:
+Definition: A running instance of a Docker image  
+State: Dynamic and can be modified during execution  
+Purpose: Executes the application  
+Storage: Runs in memory with a writable layer  
+Lifecycle: Created, started, stopped, and deleted  
+Analogy: Like an object (instance of a class)  
+
+
 
 4.	How can a container be modified?  
 A Docker container can be modified in a few practical ways:
