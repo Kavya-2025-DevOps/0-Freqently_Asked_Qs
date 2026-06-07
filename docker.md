@@ -17,24 +17,8 @@ Level 1: Core Docker Fundamentals
 In traditional virtualization the virtual machines use independent OS systems for each virtual machine and this make them heavier and slow.
 But in docker containers they share the host OS, making them lightweight and fast to start and it also ensures the consistency across the environments (dev, test, production) by packaging the application and their dependencies together. It also reduces the compatibility issues and improves the scalability and deployment speed
 
-2.	Difference between Docker image and container  
-  **Docker Image:** 
-  Definition: A read-only template with application code, libraries, and dependencies
-  State: Static and immutable  
-  Purpose: Used to create containers  
-  Storage: Stored on disk (e.g., in registries like Docker Hub)  
-  Lifecycle: Built once and reused  
-  Analogy: Like a class in programming  
-  **  
-  **Docker Container:** 
-  Definition: A running instance of a Docker image  
-  State: Dynamic and can be modified during execution  
-  Purpose: Executes the application  
-  Storage: Runs in memory with a writable layer  
-  Lifecycle: Created, started, stopped, and deleted  
-  Analogy: Like an object (instance of a class)  
-
-
+5.	What is a Dockerfile?  
+A Dockerfile is a text file that contains step-by-step instructions to automatically build a Docker image. It defines the base image, application code, dependencies, and commands needed to run the app. By using a Dockerfile, you can create consistent and repeatable environments across different systems.
 
 4.	How can a container be modified?  
 A Docker container can be modified in a few practical ways:  
@@ -44,18 +28,43 @@ A Docker container can be modified in a few practical ways:
 •	Best practice: Instead of modifying live containers, update the Dockerfile and rebuild the image for consistent and repeatable changes.  
 
 
-5.	What is a Dockerfile?  
-A Dockerfile is a text file that contains step-by-step instructions to automatically build a Docker image. It defines the base image, application code, dependencies, and commands needed to run the app. By using a Dockerfile, you can create consistent and repeatable environments across different systems.
-  
-6.	Difference between:  
-a.	COPY vs ADD  
-Aspect	COPY	ADD
-Function	Copies files from host to container	Copies files + supports extra features
-Features	Simple file copy only	Can extract compressed files and download from URLs
-Use case	Preferred for basic copying	Used when needing auto-extraction or remote download
-Behavior	Predictable and straightforward	More complex due to additional functionality
 
-b.	RUN vs CMD  
+
+
+
+2.	Difference between
+	 a. Docker image and container  
+  **Docker IMAGE:** 
+  Definition: A read-only template with application code, libraries, and dependencies
+  State: Static and immutable  
+  Purpose: Used to create containers  
+  Storage: Stored on disk (e.g., in registries like Docker Hub)  
+  Lifecycle: Built once and reused  
+  Analogy: Like a class in programming  
+  ##  
+  **Docker CONTAINER:** 
+  Definition: A running instance of a Docker image  
+  State: Dynamic and can be modified during execution  
+  Purpose: Executes the application  
+  Storage: Runs in memory with a writable layer  
+  Lifecycle: Created, started, stopped, and deleted  
+  Analogy: Like an object (instance of a class)  
+
+b.	COPY vs ADD  
+**COPY**  
+Function: Copies files from host to container  
+Features: Simple file copy only  
+Use case: Preferred for basic copying  
+Behavior: Predictable and straightforward  
+##  
+**ADD**  
+Function: Copies files + supports extra features  
+Features: Can extract compressed files and download from URLs  
+Use case: Used when needing auto-extraction or remote download  
+Behavior: More complex due to additional functionality  
+
+
+c.	RUN vs CMD  
 Aspect	RUN	CMD
 Purpose	Executes commands during image build	Specifies default command to run when container starts
 Execution time	Build time	Runtime
@@ -63,7 +72,7 @@ Result	Creates new image layers	Does not create layers, just sets default comman
 Overriding	Cannot be overridden at runtime	Can be overridden using docker run
 Example use	Install packages (apt-get install)	Start app (node app.js)
 
-c.	CMD vs ENTRYPOINT  
+d.	CMD vs ENTRYPOINT  
 Aspect	CMD	ENTRYPOINT
 Purpose	Sets default command/arguments	Sets the main command to run
 Overriding	Easily overridden by docker run command	Not easily overridden (needs --entrypoint)
@@ -72,7 +81,7 @@ Behavior	Runs only if no command is given	Always executes when container starts
 Usage together	Provides default arguments to ENTRYPOINT	Works with CMD to form full command
 Example analogy	Default parameters	Main executable  
 
-6.	Differences between docker run vs docker start  
+e. docker run vs docker start  
 Aspect	docker run	docker start
 Purpose	Creates and starts a new container from an image	Starts an existing stopped container
 Container state	Always creates a fresh container	Reuses the same container
