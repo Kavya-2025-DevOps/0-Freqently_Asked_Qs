@@ -17,22 +17,22 @@ Level 1: Core Docker Fundamentals
 In traditional virtualization the virtual machines use independent OS systems for each virtual machine and this make them heavier and slow.
 But in docker containers they share the host OS, making them lightweight and fast to start and it also ensures the consistency across the environments (dev, test, production) by packaging the application and their dependencies together. It also reduces the compatibility issues and improves the scalability and deployment speed
 
-2.	Difference between Docker image and container
-Docker Image:
-Definition: A read-only template with application code, libraries, and dependencies
-State:Static and immutable  
-Purpose:Used to create containers  
-Storage:Stored on disk (e.g., in registries like Docker Hub)  
-Lifecycle:Built once and reused  
-Analogy:Like a class in programming  
+2.	Difference between Docker image and container  
+  Docker Image:
+  Definition: A read-only template with application code, libraries, and dependencies
+  State:Static and immutable  
+  Purpose:Used to create containers  
+  Storage:Stored on disk (e.g., in registries like Docker Hub)  
+  Lifecycle:Built once and reused  
+  Analogy:Like a class in programming  
 
-Docker Container:
-Definition: A running instance of a Docker image  
-State: Dynamic and can be modified during execution  
-Purpose: Executes the application  
-Storage: Runs in memory with a writable layer  
-Lifecycle: Created, started, stopped, and deleted  
-Analogy: Like an object (instance of a class)  
+  Docker Container:
+  Definition: A running instance of a Docker image  
+  State: Dynamic and can be modified during execution  
+  Purpose: Executes the application  
+  Storage: Runs in memory with a writable layer  
+  Lifecycle: Created, started, stopped, and deleted  
+  Analogy: Like an object (instance of a class)  
 
 
 
