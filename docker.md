@@ -6,7 +6,13 @@ Level 1: Core Docker Fundamentals
 In traditional virtualization the virtual machines use independent OS systems for each virtual machine and this make them heavier and slow.
 But in docker containers they share the host OS, making them lightweight and fast to start and it also ensures the consistency across the environments (dev, test, production) by packaging the application and their dependencies together. It also reduces the compatibility issues and improves the scalability and deployment speed
 
-5.	What is a Dockerfile?  
+2. Is Docker a VM ?
+Docker containers are frequently run inside VMs. Docker is a container platform, not a virtual machine (VM). Both isolate applications, but they do it differently.  
+Example: Simple analogy
+A VM is like renting an entire apartment, including its own kitchen, bathroom, and utilities.
+A Docker container is like having your own locked room in a shared house—you have isolation, but you share the building's infrastructure.
+
+6.	What is a Dockerfile?    
 A Dockerfile is a text file that contains step-by-step instructions to automatically build a Docker image. It defines the base image, application code, dependencies, and commands needed to run the app. By using a Dockerfile, you can create consistent and repeatable environments across different systems.
 
 4.	How can a container be modified?  
@@ -100,6 +106,30 @@ A Docker container can be modified in a few practical ways:
 
 **Ubuntu base images**  
 
+
+*g. Docker vs VM*
+**Docker Container**  
+Shares the host OS kernel  
+Lightweight (MBs)  
+Starts in seconds or less  
+Lower resource usage  
+Good for packaging apps  
+Physical Server
+└─ Host OS
+   ├─ Container 1 (App)
+   ├─ Container 2 (App)
+   └─ Container 3 (App)  
+   
+**VM**  
+Runs its own full OS  
+Heavier (GBs)  
+Often takes minutes to boot  
+Higher resource usage  
+Good for running different operating systems  
+Physical Server
+├─ VM 1 (Ubuntu + App)
+├─ VM 2 (Ubuntu + App)
+└─ VM 3 (Ubuntu + App)
 
 7.	What is a Docker layer?  
 A Docker layer is a reusable, read-only unit that makes up a Docker image. Each instruction in a Dockerfile (like RUN, COPY) creates a new layer. Layers are stacked on top of each other to form the final image, which makes builds faster and efficient through caching and reuse.   
