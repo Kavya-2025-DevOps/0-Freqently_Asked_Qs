@@ -131,6 +131,30 @@ Physical Server
 ├─ VM 2 (Ubuntu + App)
 └─ VM 3 (Ubuntu + App)
 
+*h. Environment Variables	vs Docker Secrets*
+
+**Environment Variables:**   
+Purpose:	General configuration
+Storage:	Stored in container environment
+Visibility:	Visible via docker inspect, process environment, and sometimes logs
+Security:	Low
+Access in Container:	process.env, $VAR, etc.
+Docker Compose Support:	Yes
+Docker Swarm Support:	Yes 
+
+**Docker Secrets:**    
+Purpose:	Sensitive data (passwords, API keys, certificates)
+Storage:	Stored separately and mounted as files
+Visibility:	Not exposed as environment variables
+Security:	Higher
+Access in Container:	Read from files (typically under /run/secrets)
+Docker Compose Support:	Yes
+Docker Swarm Support:	Native feature
+
+
+
+
+
 7.	What is a Docker layer?  
 A Docker layer is a reusable, read-only unit that makes up a Docker image. Each instruction in a Dockerfile (like RUN, COPY) creates a new layer. Layers are stacked on top of each other to form the final image, which makes builds faster and efficient through caching and reuse.   
 
