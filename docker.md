@@ -18,7 +18,7 @@ In traditional virtualization the virtual machines use independent OS systems fo
 But in docker containers they share the host OS, making them lightweight and fast to start and it also ensures the consistency across the environments (dev, test, production) by packaging the application and their dependencies together. It also reduces the compatibility issues and improves the scalability and deployment speed
 
 2.	Difference between Docker image and container  
-  Docker Image:  
+  **Docker Image:** 
   Definition: A read-only template with application code, libraries, and dependencies
   State: Static and immutable  
   Purpose: Used to create containers  
@@ -26,7 +26,7 @@ But in docker containers they share the host OS, making them lightweight and fas
   Lifecycle: Built once and reused  
   Analogy: Like a class in programming  
   **  
-  Docker Container:
+  **Docker Container:** 
   Definition: A running instance of a Docker image  
   State: Dynamic and can be modified during execution  
   Purpose: Executes the application  
@@ -37,11 +37,11 @@ But in docker containers they share the host OS, making them lightweight and fas
 
 
 4.	How can a container be modified?  
-A Docker container can be modified in a few practical ways:
-•	Inside the running container: You can execute commands (docker exec) to install packages, edit files, or change configurations. These changes affect only that container instance.
-•	Writable layer: Containers have a thin writable layer on top of the image, so any changes (files, logs, configs) are stored there during runtime.
-•	Commit changes: You can save the modified container as a new image using docker commit, preserving the updates.
-•	Best practice: Instead of modifying live containers, update the Dockerfile and rebuild the image for consistent and repeatable changes.
+A Docker container can be modified in a few practical ways:  
+•	Inside the running container: You can execute commands (docker exec) to install packages, edit files, or change configurations. These changes affect only that container instance.  
+•	Writable layer: Containers have a thin writable layer on top of the image, so any changes (files, logs, configs) are stored there during runtime.  
+•	Commit changes: You can save the modified container as a new image using docker commit, preserving the updates.  
+•	Best practice: Instead of modifying live containers, update the Dockerfile and rebuild the image for consistent and repeatable changes.  
 
 
 5.	What is a Dockerfile?  
