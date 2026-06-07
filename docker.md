@@ -29,11 +29,7 @@ A Docker container can be modified in a few practical ways:
 •	Best practice: Instead of modifying live containers, update the Dockerfile and rebuild the image for consistent and repeatable changes.  
 
 
-
-
-
-
-2.	Difference between
+2.	Difference between  
 *a.	Docker image and container*    
   **Docker IMAGE:**  
   Definition: A read-only template with application code, libraries, and dependencies
@@ -50,51 +46,69 @@ A Docker container can be modified in a few practical ways:
   Lifecycle: Created, started, stopped, and deleted  
   Analogy: Like an object (instance of a class)  
 
-*b.	COPY vs ADD*    
-**COPY**  
-Function: Copies files from host to container  
-Features: Simple file copy only  
-Use case: Preferred for basic copying  
-Behavior: Predictable and straightforward    
-**ADD**  
-Function: Copies files + supports extra features  
-Features: Can extract compressed files and download from URLs  
-Use case: Used when needing auto-extraction or remote download  
-Behavior: More complex due to additional functionality  
+ *b.	COPY vs ADD*    
+ **COPY**  
+ Function: Copies files from host to container  
+ Features: Simple file copy only  
+ Use case: Preferred for basic copying  
+ Behavior: Predictable and straightforward    
+ **ADD**  
+ Function: Copies files + supports extra features  
+ Features: Can extract compressed files and download from URLs  
+ Use case: Used when needing auto-extraction or remote download  
+ Behavior: More complex due to additional functionality  
 
 
-*c.	RUN vs CMD*   
-**RUN**  
-Purpose: Executes commands during image build  
-Execution time: Build time  
-Result: Creates new image layers  
-Overriding: Cannot be overridden at runtime  
-Example: use	Install packages (apt-get install)  
+ *c.	RUN vs CMD*   
+ **RUN**  
+ Purpose: Executes commands during image build  
+ Execution time: Build time  
+ Result: Creates new image layers  
+ Overriding: Cannot be overridden at runtime  
+ Example: use	Install packages (apt-get install)  
+ **CMD**  
+ Purpose: Specifies default command to run when container starts
+ Execution time: Runtime  
+ Result: Does not create layers, just sets default command  
+ Overriding: Can be overridden using docker run  
+ Example: Start app (node app.js)   
+
+
+*d.	CMD vs ENTRYPOINT*    
 **CMD**  
-Purpose: Specifies default command to run when container starts
-Execution time: Runtime  
-Result: Does not create layers, just sets default command  
-Overriding: Can be overridden using docker run  
-Example: Start app (node app.js)   
+Purpose: Sets default command/arguments  
+Overriding: Easily overridden by docker run command  
+Flexibility: Flexible, used for default behavior  
+Behavior: Runs only if no command is given  
+Usage: Provides default arguments to ENTRYPOINT  
+Example: Default parameters
 
-
-*d.	CMD vs ENTRYPOINT*  
-Aspect	CMD	ENTRYPOINT
-Purpose	Sets default command/arguments	Sets the main command to run
-Overriding	Easily overridden by docker run command	Not easily overridden (needs --entrypoint)
-Flexibility	Flexible, used for default behavior	Rigid, used for fixed execution
-Behavior	Runs only if no command is given	Always executes when container starts
-Usage together	Provides default arguments to ENTRYPOINT	Works with CMD to form full command
-Example analogy	Default parameters	Main executable  
+**ENTRYPOINT**  
+Purpose: Sets the main command to run  
+Overriding: Not easily overridden (needs --entrypoint)  
+Flexibility: Rigid, used for fixed execution  
+Behavior: Always executes when container starts  
+Usage: Works with CMD to form full command  
+Example: Main executable  
+ 
 
 *e. docker run vs docker start*    
-Aspect	docker run	docker start
-Purpose	Creates and starts a new container from an image	Starts an existing stopped container
-Container state	Always creates a fresh container	Reuses the same container
-Image usage	Requires a Docker image	Does not use image (container already exists)
-First-time use	Used when running a container for the first time	Used for restarting stopped containers
-Customization	Can pass new configs, ports, environment variables	Uses existing configuration
-Example	docker run ubuntu	`docker start  
+**docker run**  
+Purpose: Creates and starts a new container from an image  
+Container state: Always creates a fresh container  
+Image usage: Requires a Docker image  
+First-time use: Used when running a container for the first time  
+Customization: Can pass new configs, ports, environment variables  
+Example: docker run ubuntu
+
+**docker start**  
+Purpose: Starts an existing stopped container  
+Container state: Reuses the same container  
+Image usage: Does not use image (container already exists)  
+First-time use: Used for restarting stopped containers  
+Customization: Uses existing configuration  
+Example: docker start  
+
 
 7.	What is a Docker layer?  
 A Docker layer is a reusable, read-only unit that makes up a Docker image. Each instruction in a Dockerfile (like RUN, COPY) creates a new layer. Layers are stacked on top of each other to form the final image, which makes builds faster and efficient through caching and reuse.   
