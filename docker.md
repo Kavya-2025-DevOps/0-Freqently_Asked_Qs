@@ -107,6 +107,8 @@ A Docker container can be modified in a few practical ways:
  Customization: Uses existing configuration  
  Example: docker start  
 
+*f.	Alpine vs Ubuntu base images (pros/cons)*  
+
 
 7.	What is a Docker layer?  
 A Docker layer is a reusable, read-only unit that makes up a Docker image. Each instruction in a Dockerfile (like RUN, COPY) creates a new layer. Layers are stacked on top of each other to form the final image, which makes builds faster and efficient through caching and reuse.   
@@ -133,4 +135,43 @@ When a Docker container exits, the following happens:
 •	Any data stored in the container’s writable layer remains (unless the container is removed).  
 •	Logs and exit code can still be viewed using docker logs and docker inspect.  
 •	You can restart it later using docker start, if needed.  
+
+##
+
+Level 2: Intermediate / Practical  
+
+1.	How do you reduce Docker image size?
+You can reduce Docker image size using these practices:
+•	Use a smaller base image (e.g., alpine instead of full OS images).
+•	Use multi-stage builds to separate build dependencies from final runtime image.
+•	Remove unnecessary files using .dockerignore (logs, tests, node_modules, etc.).
+•	Combine RUN commands to reduce the number of layers.
+•	Clean up package caches (e.g., apt-get clean, rm -rf /var/lib/apt/lists/*).
+•	Install only required dependencies, avoid dev tools in production images.
+•	Use specific image tags instead of large or “latest” bloated images.
+
+
+2.	What is multi-stage build? Give a real use case.
+A multi-stage build in Docker is a technique where a Dockerfile uses multiple stages (FROM statements) to separate the build environment from the final runtime environment.
+•	In the first stage, you compile or build the application (with all build tools).
+•	In the final stage, you copy only the required output (like compiled code) into a smaller image.
+•	This helps create smaller, secure, and production-ready images.
+Real use case
+For a Node.js or Java application:
+•	Stage 1: Install dependencies and build the project (npm install, npm run build or Maven build).
+•	Stage 2: Use a lightweight base image (like node:alpine or openjdk:jre) and copy only the built files.
+Result: Final image does not include source code, build tools, or unnecessary dependencies, making it much smaller and faster to deploy.
+3.	Difference between:
+a.	Alpine vs Ubuntu base images (pros/cons)
+
+4.	How do you pass environment variables securely?
+5.	What are Docker volumes vs bind mounts?
+6.	Explain Docker networking:
+b.	bridge
+c.	host
+d.	overlay
+7.	How containers communicate across hosts?
+8.	What is Docker Compose? When NOT to use it?
+9.	How do you debug a failing container?
+10.	How do you handle logs in Docker?
 
