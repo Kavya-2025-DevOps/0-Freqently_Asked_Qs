@@ -82,7 +82,6 @@ A Docker container can be modified in a few practical ways:
  Behavior: Runs only if no command is given  
  Usage: Provides default arguments to ENTRYPOINT  
  Example: Default parameters
- 
  **ENTRYPOINT**  
  Purpose: Sets the main command to run  
  Overriding: Not easily overridden (needs --entrypoint)  
@@ -99,7 +98,7 @@ A Docker container can be modified in a few practical ways:
  Image usage: Requires a Docker image  
  First-time use: Used when running a container for the first time  
  Customization: Can pass new configs, ports, environment variables  
- Example: docker run ubuntu
+ Example: docker run ubuntu  
  **Docker START**  
  Purpose: Starts an existing stopped container  
  Container state: Reuses the same container  
