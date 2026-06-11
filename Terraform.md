@@ -51,7 +51,7 @@ Displays useful values after execution.
 Reusable Terraform code block.
 
 15. Difference between module and resource?  
-"Resource → single infra component
+"Resource → single infra component  
 Module → collection of resources"
 
 16. What is terraform validate?  
